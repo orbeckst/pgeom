@@ -100,7 +100,7 @@ transition---see the paper):
 
 Radii are taken to be 'solvent accessible radii', i.e. the centre of
 the wall atom lies on a circle of radius _R_ + _r_<sub>A</sub> where
-_r_</sub>A</sub> is the van der Waals radius of the wall atom (~1.95
+_r_<sub>A</sub> is the van der Waals radius of the wall atom (~1.95
 &Aring; for CH<sub>4</sub>).
 
 It is also possible to keep all the arguments in a file (say,
