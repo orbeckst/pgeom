@@ -81,28 +81,30 @@ Usage
 ### Hydrophobic pores ###
 
 To generate my standard model pores (the ones used in my papers), the
-commandline looks as follows (snipped from my master Makefile):
-    RADIUS  := varies from 1.5 to R_INNER
-    R_OUTER := 18
-    R_INNER := 10
-    L_PORE  := 8
-    L_MOUTH := 4
+commandline looks as follows:
+
+    RADIUS=5.5    # can use values from 1.5 A up to R_INNER
+    R_OUTER=18
+    R_INNER=10
+    L_PORE=8
+    L_MOUTH=4
     
-    pgeom -v -R $(R_OUTER) -P $(RADIUS)  $(L_PORE) 
-             -M $(R_INNER) $(L_MOUTH) \
+    pgeom -v -R ${R_OUTER} -P ${RADIUS}  ${L_PORE} \
+             -M ${R_INNER} ${L_MOUTH} \
           -x -o pore.pdb -s pore.itp
 
-The benchmark pore of radius 5.5 Angstrom (right at the switching
-transition):
+The benchmark pore of radius 5.5 &Aring; (right at the switching
+transition---see the paper):
 
     ./pgeom -v -R 18 -P 5.5 8 -M 10 4 -x -o pore.pdb -s pore.itp
 
-Radii are taken to be 'solvent accessible radii', ie the centre of the
-wall atom lies on a circle of radius R+rA where rA is the van der
-Waals radius of the wall atom (~1.95 Å for CH4).
+Radii are taken to be 'solvent accessible radii', i.e. the centre of
+the wall atom lies on a circle of radius _R_ + _r_<sub>A</sub> where
+_r_</sub>A</sub> is the van der Waals radius of the wall atom (~1.95
+&Aring; for CH<sub>4</sub>).
 
 It is also possible to keep all the arguments in a file (say,
-pore.txt) and run
+``pore.txt``) and run
 
     pgeom -f pore.txt -o pore.pdb -s pore.itp
 
@@ -125,24 +127,33 @@ The pore looks like this:
     ******** |
     *****    |     lower MOUTH
 
+One can also create more complicated geometries by using multiple
+_PORE_ sections in the input file, as shown, for instance, in
+> P. Pongprayoon, O. Beckstein, C.-L. Wee, and
+> M. S. P. Sansom. _Simulations of anion transport through OprP reveal
+> the molecular basis for high affinity and selectivity for phosphate._
+> Proc. Natl. Acad. Sci. USA **106** (2009),
+> 21614-21618. doi:[10.1073/pnas.0907315106][]
 
-After that the pore has to be embedded into a slab of dummy atoms by a
-series of gromacs commands and solvated with water (and ions if
-desired). I do this in a Makefile; email me and I will send it to
-you. And older version of all the necessary files is available at
-<http://sbcb.bioch.ox.ac.uk/oliver/download/HyGate/>.
+Typically, the pore is embedded into a slab of dummy atoms by a series
+of Gromacs commands and solvated with water (and ions if desired). I
+do this in a Makefile; email me and I will send it to you. An older
+version of all the necessary files is available at the [Hydrophobic
+Gating example][HyGate] page.
 
+[10.1073/pnas.0907315106]: http://dx.doi.org/10.1073/pnas.0907315106
+[HyGate]: http://sbcb.bioch.ox.ac.uk/oliver/download/HyGate/
 
 ### Hydrophilic pores ###
 
 I just added the appropriate charges to the itp file; the dipole
 moments were taken to mimick the peptide backbone dipole moment. At an
-atomic distance of 4 Å this requires a charge of +/- 0.38e. A
-semi-automatic approach is taken by Scripts/porecharger.pl which takes
-a list of atom numbers (alternating between positively and negatively
-charged ones) and the charge and changes the itp file accordingly. You
-still need to write down the list of atoms by using eg rasmol or vmd
-to select the atoms.
+atomic distance of 4 &Aring; this requires a charge of +/- 0.38e. A
+semi-automatic approach is taken by ``scripts/porecharger.pl`` which
+takes a list of atom numbers (alternating between positively and
+negatively charged ones) and the charge and changes the itp file
+accordingly. You still need to write down the list of atoms by using
+eg rasmol or vmd to select the atoms.
 
 
 Bugs
