@@ -33,6 +33,17 @@ the Gromacs force field) and then tries to calculate (essentially) the
 canonical partition function for a single water molecule in this
 external potential.
 
+Citing
+------
+
+If you use this code in published work, please cite
+
+  O. Beckstein, Philip C. Biggin and Mark S. P. Sansom, A hydrophobic
+  gating mechanism for nanopores, J. Phys. Chem. B 105 (2001),
+  12902-12905
+
+Thank you!
+
 
 Installation
 ------------
