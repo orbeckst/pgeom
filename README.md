@@ -129,6 +129,7 @@ The pore looks like this:
 
 One can also create more complicated geometries by using multiple
 _PORE_ sections in the input file, as shown, for instance, in
+
 > P. Pongprayoon, O. Beckstein, C.-L. Wee, and
 > M. S. P. Sansom. _Simulations of anion transport through OprP reveal
 > the molecular basis for high affinity and selectivity for phosphate._
